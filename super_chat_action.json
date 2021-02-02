@@ -1,0 +1,16 @@
+{
+  "initializeCommands": [
+    "/title {{player}} times 10 40 10"
+  ],
+  "commands": [
+    "/title {{player}} subtitle [\"\",{\"text\":\"{{author_name}}さんから\"},{\"text\":\"{{purchase_amount}}\",\"color\":\"{{hex_color}}\"}]",
+    "/title {{player}} title {\"text\":\"スーパーチャット速報\"}",
+    "/tellraw {{player}} [\"\",{\"text\":\"{{author_name}}さんから\"},{\"text\":\"{{purchase_amount}}\",\"color\":\"{{hex_color}}\"},{\"text\":\"のスーパーチャットです\"}]",
+    "/tellraw {{player}} {\"text\":\"{{author_name}}「{{comment}}」\"}",
+    "/execute at {{player}} run summon firework_rocket ~ ~2 ~ {LifeTime:40,FireworksItem:{id:firework_rocket,Count:1,tag:{Fireworks:{Explosions:[{Type:1,Flicker:1,Trail:1,Colors:[I;1973019,11743532,3887386,5320730,2437522,8073150,2651799,11250603,4408131,14188952,4312372,14602026,6719955,12801229,15435844,15790320],FadeColors:[I;1973019,11743532,3887386,5320730,2437522,8073150,2651799,11250603,4408131,14188952,4312372,14602026,6719955,12801229,15435844,15790320]}],Flight:2}}}}"
+  ],
+  "minecraftUserCommands": [
+    "/give {{player}} minecraft:player_head{SkullOwner:\"{{minecraft_user}}\"}"
+  ],
+  "description": "スパチャの末尾に「@」と「Minecraftユーザー名」を付けると、{{player}}に顔を送れます（例：スパチャです　@{{player}}）"
+}

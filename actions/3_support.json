@@ -1,0 +1,25 @@
+[
+  {
+    "caption": "発光",
+    "words": ["発光", "グロウ", "サーマルインク"],
+    "commands": [
+      "/execute as {{player}} run effect give @e[distance=1..50,type=!minecraft:item] minecraft:glowing 30",
+      "/say 30秒間50メートル以内のモブの位置が見えるようになった！"
+    ],
+    "cost": 10,
+    "affect_comment_power": false
+  },
+  {
+    "caption": "てぇてぇ",
+    "regex": "て[えぇ]て[えぇ]",
+    "commands": [
+      "/execute at @e[distance=..10,type=minecraft:zombie] as {{player}} run particle minecraft:instant_effect ~ ~ ~ 0.4 1 0.4 1 50",
+      "/execute at @e[distance=..10,type=minecraft:zombie] as {{player}} run particle minecraft:flash ~ ~ ~ 0 0 0 1 5",
+      "/execute at @e[distance=..10,type=minecraft:zombie] as {{player}} run summon minecraft:villager ~ ~ ~",
+      "/execute at {{player}} as @e[distance=..10,type=minecraft:zombie] run kill",
+      "/say あまりの尊さに {{player}} の周囲のゾンビが村人に戻りました"
+    ],
+    "cost": 10,
+    "affect_comment_power": false
+  }
+]

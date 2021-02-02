@@ -1,0 +1,17 @@
+[
+  {
+    "caption": "ランダム",
+    "words": ["ランダム", "ガチャ", "rand()", "ルーレット", "ゆびをふる", "パルプンテ", "ぱろぷんてカード", "いのる", "なにがおこるかな", "ハマン"],
+    "common_commands": [
+      "/say {{player}}にランダムな効果！"
+    ],
+    "commands": [
+      [
+        "/title {{player}} title {\"text\":\"ハズレ\"}"
+      ]
+    ],
+    "cost": 10,
+    "affect_comment_power": false,
+    "random": true
+  }
+]

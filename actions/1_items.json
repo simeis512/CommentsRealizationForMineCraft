@@ -1,0 +1,32 @@
+[
+  {
+    "caption": "草",
+    "words": ["草", "ｗｗｗ", "lol"],
+    "commands": [
+      "/give {{player}} minecraft:grass {{amount}}",
+      "/say {{player}} のインベントリに草が生えました"
+    ],
+    "cost": 2,
+    "affect_comment_power": true
+  },
+  {
+    "caption": "ダイヤ",
+    "regex": "ダイ[アヤ](モンド)??",
+    "commands": [
+      "/give {{player}} minecraft:diamond_ore {{amount}}",
+      "/say なんと {{player}} のインベントリでダイヤモンド鉱石が産出しました"
+    ],
+    "cost": 500,
+    "affect_comment_power": true
+  },
+  {
+    "caption": "建材",
+    "words": ["建材", "木材"],
+    "commands": [
+      "/give {{player}} chest{BlockEntityTag:{Items:[{Slot:10,id:oak_log,Count:16},{Slot:11,id:spruce_log,Count:16},{Slot:12,id:birch_log,Count:16},{Slot:14,id:jungle_log,Count:16},{Slot:15,id:acacia_log,Count:16},{Slot:16,id:dark_oak_log,Count:16}]}} 1",
+      "/say {{player}} のインベントリに建材入りのチェストが現れました"
+    ],
+    "cost": 50,
+    "affect_comment_power": true
+  }
+]

@@ -1,0 +1,69 @@
+[
+  {
+    "caption": "エルシャダイ",
+    "words": ["そんな装備で大丈夫か？"],
+    "commands": [
+      "/execute if entity @a[name={{player}},level=0] run replaceitem entity {{player}} armor.chest minecraft:iron_chestplate{Damage:236,Enchantments:[{id:protection,lvl:100}]}",
+      "/execute if entity @a[name={{player}},level=0] run replaceitem entity {{player}} armor.legs minecraft:leather_leggings{display:{color:5087211},Enchantments:[{id:protection,lvl:3},{id:unbreaking,lvl:100},{id:feather_falling,lvl:10}]}",
+      "/execute if entity @a[name={{player}},level=0] run replaceitem entity {{player}} armor.feet minecraft:iron_boots{Damage:190,Enchantments:[{id:protection,lvl:100},{id:feather_falling,lvl:100}]}",
+      "/say ？？？「そんな装備で大丈夫か？」",
+      "/execute if entity @a[name={{player}},level=0] run say {{player}}「一番いいのを頼む」",
+      "/execute unless entity @a[name={{player}},level=0] run say {{player}}「大丈夫だ、問題ない」"
+    ],
+    "cost": 10,
+    "affect_comment_power": false
+  },
+  {
+    "caption": "天気の子",
+    "words": ["今から晴れるよ"],
+    "commands": [
+      "/weather clear",
+      "/say 「今から晴れるよ！」"
+    ],
+    "cost": 10,
+    "affect_comment_power": false
+  },
+  {
+    "caption": "メテオ",
+    "regex": "パワーをメテオに(！)??",
+    "commands": [
+      "/execute at @e[distance=2..30,type=!minecraft:item] as {{player}} run summon minecraft:creeper ~ ~1 ~ {Fuse:0,ExplosionRadius:1,NoGravity:1b}",
+      "/say {{player}}「いいですとも！」"
+    ],
+    "cost": 10,
+    "affect_comment_power": false
+  },
+  {
+    "caption": "リフォーム",
+    "regex": "(リフォーム|ビフォーアフター|匠|(シュー|ｼｭｰ)[.・…‥]+)",
+    "commands": [
+      "/execute at {{player}} run summon minecraft:bat ~ ~10 ~ {Passengers:[{id:\"minecraft:creeper\",powered:1b,CustomName:\"\\\"エンドシティ帰りの匠\\\"\",CustomNameVisible:1b,DeathLootTable:\"minecraft:chests/end_city_treasure\"}]}",
+      "/say みんなの応援で {{player}} の上空に「エンドシティ帰りの匠」がコウモリに乗って駆けつけました！"
+    ],
+    "cost": 10,
+    "affect_comment_power": false
+  },
+  {
+    "caption": "🐖",
+    "words": ["ポーキー", "🐖", "🐷", "🐽"],
+    "commands": [
+      "/execute at @e[distance=..10,type=minecraft:villager] as {{player}} run particle minecraft:instant_effect ~ ~ ~ 0.4 1 0.4 1 50",
+      "/execute at @e[distance=..10,type=minecraft:villager] as {{player}} run particle minecraft:flash ~ ~ ~ 0 0 0 1 5",
+      "/execute at @e[distance=..10,type=minecraft:villager] as {{player}} run summon minecraft:pig ~ ~ ~",
+      "/execute at {{player}} as @e[distance=..10,type=minecraft:villager] run kill",
+      "/say なんと魔法で {{player}} の周囲の村人が豚になりました"
+    ],
+    "cost": 10,
+    "affect_comment_power": false
+  },
+  {
+    "caption": "ファイナルソード",
+    "words": ["お前すごいな", "さっきは無視してごめんな", "わたくしと結婚してください", "お前勇敢なヤツだな"],
+    "commands": [
+      "/say {{player}}「当然んじゃろ..!」"
+    ],
+    "cost": 10,
+    "affect_comment_power": false,
+    "hidden": true
+  }
+]

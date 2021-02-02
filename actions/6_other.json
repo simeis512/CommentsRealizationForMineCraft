@@ -1,0 +1,21 @@
+[
+  {
+    "caption": "江戸",
+    "words": ["えっっ","エッッ","えど","エド","江戸"],
+    "commands": [
+      "/say 江戸（えど）は、東京の旧称であり、1603年から1867年まで江戸幕府が置かれていた都市である。現在の東京都区部の中央部に位置し、その前身及び原型に当たる。"
+    ],
+    "cost": 10,
+    "affect_comment_power": false
+  },
+  {
+    "caption": "舌打ち",
+    "words": ["チッ", "ﾁｯ"],
+    "commands": [
+      "/say {{player}}「期待に応えられず、すまんな^^」"
+    ],
+    "cost": 10,
+    "affect_comment_power": false,
+    "hidden": true
+  }
+]

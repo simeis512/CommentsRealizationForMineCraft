@@ -1,0 +1,17 @@
+[
+  {
+    "caption": "応援",
+    "regex": "(頑|がん)[張ば][れえぇ]",
+    "commands": [
+      "/effect give {{player}} minecraft:regeneration 10 1",
+      "/effect give {{player}} minecraft:health_boost 10 1",
+      "/effect give {{player}} minecraft:strength 10 2",
+      "/effect give {{player}} minecraft:resistance 10 1",
+      "/effect give {{player}} minecraft:fire_resistance 10 2",
+      "/effect give {{player}} minecraft:glowing 10 2",
+      "/say みんなの応援で {{player}} はパワーアップした！（効果時間10秒）"
+    ],
+    "cost": 10,
+    "affect_comment_power": false
+  }
+]

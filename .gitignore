@@ -1,0 +1,4 @@
+node_modules/
+players/
+client_secret*
+setting.json
