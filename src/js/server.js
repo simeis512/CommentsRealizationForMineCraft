@@ -106,7 +106,7 @@ app.get('/player-info', (req, res, next) => {
   const uuid = req.cookies.uuid
   const isLoggedIn = (req.cookies.uuid in playerInfoObjects)
   if (isLoggedIn) {
-    if (!playerInfoObjects[uuid].commentAmplifier) initMinecraftClient(uuid)
+    if (playerInfoObjects[uuid].commentAmplifier == undefined) initMinecraftClient(uuid)
     res.json({
       status: 'success',
       info: {
@@ -405,6 +405,7 @@ function savePlayerData(uuid)
       ret[key] = playerInfoObjects[uuid][key]
       return ret
     }, {})
+  if (!fs.existsSync(playerDataDir)) fs.mkdirSync(playerDataDir)
   fs.writeFile(path.join(playerDataDir, `${uuid}.json`), JSON.stringify(data), (err) => {
     if (err) throw err
     // console.log(`${path.join(playerDataDir, `${uuid}.json`)} を保存しました`);
