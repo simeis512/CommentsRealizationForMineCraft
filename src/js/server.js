@@ -196,7 +196,9 @@ app.post('/youtube-chat-url-enter', jsonParser, (req, res, next) => {
       : req.body.url
     ;(async () => {
       // Headless Chromeでチャット画面を開く 
-      playerInfoObject.browser = await puppeteer.launch()
+      playerInfoObject.browser = await puppeteer.launch({
+        args: ['--no-sandbox']
+      })
       playerInfoObject.page = await playerInfoObject.browser.newPage()
       const response = await playerInfoObject.page.goto(url)
       if (response.status() === 200) {
