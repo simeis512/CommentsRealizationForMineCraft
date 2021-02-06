@@ -12,5 +12,5 @@
   "minecraftUserCommands": [
     "/give {{player}} minecraft:player_head{SkullOwner:\"{{minecraft_user}}\"}"
   ],
-  "description": "スパチャの末尾に「@」と「Minecraftユーザー名」を付けると、{{player}}に顔を送れます（例：スパチャです　@{{player}}）"
+  "description": "スパチャの末尾に「@」と「Minecraftユーザー名」を付けると、{{player}}にユーザーの顔を送れます（例：スパチャです　@Steve）"
 }

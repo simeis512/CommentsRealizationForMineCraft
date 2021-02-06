@@ -88,7 +88,7 @@
           v-if="false"
           @keydown="submitComment"
         )
-        v-btn(
+      //--  v-btn(
           v-if="true"
           @click="submitSuperChat"
         ) スパチャテスト

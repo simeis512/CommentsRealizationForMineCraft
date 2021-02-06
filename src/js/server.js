@@ -200,8 +200,34 @@ app.post('/youtube-chat-url-enter', jsonParser, (req, res, next) => {
         args: ['--no-sandbox']
       })
       playerInfoObject.page = await playerInfoObject.browser.newPage()
+      const userAgent = (await playerInfoObject.browser.userAgent()).replace('HeadlessChrome', 'Chrome')
+      await playerInfoObject.page.setUserAgent(userAgent)
       const response = await playerInfoObject.page.goto(url)
       if (response.status() === 200) {
+        // MutationObserverからのconsole.logを受け取る
+        playerInfoObject.page.on('console', (msg) => {
+          console.log(msg.text())
+          try {
+            msg = JSON.parse(msg.text())
+
+            if ('type' in msg) {
+              if (msg.type === 'normal') {
+                if ((msg.authorType === 'owner' ||
+                    settingJson.accept_moderator_command_execution &&
+                    msg.authorType === 'moderator') &&
+                    /^\/[a-zA-Z]+/.test(msg.comment)) {
+                  executeCommand(stringTemplateParser(msg.comment, { player: playerInfoObject.player }))
+                } else {
+                  commentParser(msg.comment, msg.authorName, playerInfoObject)
+                }
+              } else if (msg.type === 'super-chat') {
+                executeSuperChatCommand(msg, playerInfoObject)
+              }
+            }
+          } catch (e) {
+            console.log(e)
+          }
+        })
         // チャットの変更を監視する
         await playerInfoObject.page.evaluate(() => {
           const observer = new MutationObserver((records) => {
@@ -257,30 +283,6 @@ app.post('/youtube-chat-url-enter', jsonParser, (req, res, next) => {
           const target = document.querySelector('#item-scroller')
           observer.observe(target, config)
         })
-        // MutationObserverからのconsole.logを受け取る
-        playerInfoObject.page.on('console', (msg) => {
-          console.log(msg.text())
-          try {
-            msg = JSON.parse(msg.text())
-
-            if ('type' in msg) {
-              if (msg.type === 'normal') {
-                if ((msg.authorType === 'owner' ||
-                    settingJson.accept_moderator_command_execution &&
-                    msg.authorType === 'moderator') &&
-                    /^\/[a-zA-Z]+/.test(msg.comment)) {
-                  executeCommand(stringTemplateParser(msg.comment, { player: playerInfoObject.player }))
-                } else {
-                  commentParser(msg.comment, msg.authorName, playerInfoObject)
-                }
-              } else if (msg.type === 'super-chat') {
-                executeSuperChatCommand(msg, playerInfoObject)
-              }
-            }
-          } catch (e) {
-            console.log(e)
-          }
-        })
         console.log('Complate')
         res.json({
           status: 'success',
@@ -309,17 +311,21 @@ app.get('/actions', (req, res, next) => {
   const uuid = req.cookies.uuid
   console.log('/actions '+ uuid)
   const isLoggedIn = (uuid in playerInfoObjects)
-  if (isLoggedIn) {
-    res.json({
-      status: 'success',
-      commentAmplifier: playerInfoObjects[uuid].commentAmplifier,
-      actions: getPlayerActions(uuid)
-    })
-  } else {
-    res.json({
-      status: 'error',
-      message: 'Not logged in'
-    })
+  try {
+    if (isLoggedIn) {
+      res.json({
+        status: 'success',
+        commentAmplifier: playerInfoObjects[uuid].commentAmplifier,
+        actions: getPlayerActions(uuid)
+      })
+    } else {
+      res.json({
+        status: 'error',
+        message: 'Not logged in'
+      })
+    }
+  } catch (e) {
+    console.log(e.toString())
   }
 })
 
